@@ -17,11 +17,15 @@ const Navbar = (props) => {
       </div>
       <div className={style.options}>
         <ul className={style.options_list}>
-          {localStorage.getItem('userlist_loggedIn') === 'false' &&
-            <li><Link to="/">Sign In</Link></li>}
+          {
+            localStorage.getItem('userlist_loggedIn') === 'false' &&
+            <li><Link to="/">Sign In</Link></li>
+          }
           <li><Link to="/home"> Home</Link></li>
-          {localStorage.getItem('userlist_loggedIn') === 'true' &&
-            <li onClick={handleLogout} style={{ cursor: "pointer" }}>Logout</li>}
+          {
+            localStorage.getItem('userlist_loggedIn') === 'true' &&
+            <li onClick={handleLogout} style={{ cursor: "pointer" }}>Logout</li>
+          }
         </ul>
       </div>
     </nav>

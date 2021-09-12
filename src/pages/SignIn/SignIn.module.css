@@ -42,3 +42,8 @@
 .error_msg{
   color: rgb(189, 36, 36);
 }
+
+.link{
+  text-decoration: none;
+  color: #fff;
+}

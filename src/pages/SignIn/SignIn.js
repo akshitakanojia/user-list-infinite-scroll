@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import style from './SignIn.module.css'
 
 const SignIn = (props) => {
@@ -24,25 +25,38 @@ const SignIn = (props) => {
 
   return (
     <div className={style.form_card}>
-      <h3>Sign In</h3>
-      <form className={style.from_container} onSubmit={handleSubmit}>
-        <input type="text"
-          name="username"
-          value={credentials.username}
-          onChange={handleChange}
-          className={style.inp}
-          placeholder="Username" required />
-        <input type="password"
-          name="password"
-          value={credentials.password}
-          onChange={handleChange}
-          className={style.inp}
-          placeholder="Password" required />
-        {error && <p className={style.error_msg}>Invalid username/password</p>}
-        <div>
-          <button className={style.submit_btn}>Submit</button>
-        </div>
-      </form>
+      {
+        localStorage.getItem('userlist_loggedIn') === 'false' ?
+          <>
+            <h3>Sign In</h3>
+            <form className={style.from_container} onSubmit={handleSubmit}>
+              <input type="text"
+                name="username"
+                value={credentials.username}
+                onChange={handleChange}
+                className={style.inp}
+                placeholder="Username" required />
+              <input type="password"
+                name="password"
+                value={credentials.password}
+                onChange={handleChange}
+                className={style.inp}
+                placeholder="Password" required />
+              {
+                error && <p className={style.error_msg}>Invalid username/password</p>
+              }
+              <div>
+                <button className={style.submit_btn}>Submit</button>
+              </div>
+            </form>
+          </> :
+          <>
+            <p>Already signed in</p>
+            <button className={style.submit_btn}>
+              <Link className={style.link} to='/home'>Continue to Home</Link>
+            </button>
+          </>
+      }
     </div>
   )
 }
