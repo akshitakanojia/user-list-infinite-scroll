@@ -26,7 +26,7 @@ const SignIn = (props) => {
   return (
     <div className={style.form_card}>
       {
-        localStorage.getItem('userlist_loggedIn') === 'false' ?
+        (localStorage.getItem('userlist_loggedIn') === 'false' || !localStorage.getItem('userlist_loggedIn')) ?
           <>
             <h3>Sign In</h3>
             <form className={style.from_container} onSubmit={handleSubmit}>
